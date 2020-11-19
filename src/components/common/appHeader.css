@@ -16,11 +16,10 @@
 
 .headerNav > li {
   display: inline-block;
-  padding: 8px 12px;
   min-width: 50px;
   text-align: center;
   color: white;
-  font-family: 'NanumSquare_acBold';
+  font-weight: 900;
 }
 
 .headerNav > li.onClicked {
@@ -28,15 +27,25 @@
   border-radius: 10px;
 }
 
+.headerNav > li.onClicked > a {
+  color: black;
+}
+
 .headerTitle {
   font-size: 40px;
   padding: 80px 0px 0px 0px;
-  font-family: 'NanumSquare_acExtraBold';
+  font-weight: 900;
 }
 
 .headerSubTitle {
   font-weight: 700;
   color: black;
   padding-top: 5px;
-  font-family: 'NanumSquare_acLight';
+}
+
+.headerNav a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 15px;
+  display: inline-block;
 }
