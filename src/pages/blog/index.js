@@ -2,9 +2,11 @@ import React from 'react'
 import './blog.css'
 
 import post_thumb_1 from '../../styles/img/post_thumb_1.png'
-import profile from '../../styles/img/profile.jpg'
 import squre_plus from '../../styles/img/square_plus_icon_gray.png'
 import no_thumb_img from '../../styles/img/no_thumb_img.png'
+
+// import components
+import MyProfile from '../../components/MyProfile'
 
 export default function index() {
     return (
@@ -62,11 +64,7 @@ export default function index() {
                 </div>
             </div>
             <div className="blog-right-container">
-                <div className="profile-container">
-                    <div><img src={profile} /></div>
-                    <div>SeungHyun Cho</div>
-                    <div>luck is the residue of design</div>
-                </div>
+                <MyProfile/>
                 <div className="search-container">
                     <input placeholder="검색기능을 이용해보세요!" />
                 </div>
