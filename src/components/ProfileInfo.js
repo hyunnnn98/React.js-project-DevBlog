@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom'
 import classNames from '../utils/classNames'
 
 // import styles
-import './MyProfile.css';
+import './ProfileInfo.css';
 import profile from '../styles/img/profile.jpg'
 
-export default function MyProfile(props) {
+export default function ProfileInfo(props) {
     const [profileImg, setProfileImg] = useState(profile)
     const [profileClass, setProfileClass] = useState(null)
     const location = useLocation();
@@ -16,8 +16,8 @@ export default function MyProfile(props) {
         const currentPath = location.pathname;
 
         setProfileClass(classNames({
-            'profile-container': true,
-            'login-profile-container': currentPath === '/login'
+            'info-container': true,
+            'login-info-container': currentPath === '/login'
         }))
     }, [location]);
 

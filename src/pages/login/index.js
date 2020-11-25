@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 import './login.css'
 
 // import components
-import MyProfile from '../../components/MyProfile'
+import ProfileInfo from '../../components/ProfileInfo'
 
 export default function LoginPage() {
     const [email, setEmail] = useState('tmdgus2358@gmail.com')
@@ -18,7 +18,7 @@ export default function LoginPage() {
 
     return (
         <div className="login-container">
-            <MyProfile />
+            <ProfileInfo />
             <div className="login-content-container">
                 <div className="login-input-container">
                     <input placeholder="아이디를 입력해주세요" onChange={(e) => handelEmailChange(e)} type="text" value={email} />

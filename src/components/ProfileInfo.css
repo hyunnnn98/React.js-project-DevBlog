@@ -1,37 +1,37 @@
-.profile-container {
+.info-container {
   padding: 5px;
   width: 250px;
   margin: 0 auto;
 }
 
-.profile-container > div:nth-child(1) {
+.info-container > div:nth-child(1) {
   margin: 15px 0px;
 }
 
-.profile-container > div:nth-child(1) > img {
+.info-container > div:nth-child(1) > img {
   border-radius: 200px;
   width: 100%;
 }
 
-.profile-container > div:nth-child(2) {
+.info-container > div:nth-child(2) {
   font-family: "NanumSquare_acExtraBold";
   font-size: 20px;
   margin-bottom: 5px;
 }
 
-.profile-container > div:nth-child(3) {
+.info-container > div:nth-child(3) {
   font-weight: 600;
   color: #706f6f;
   padding-bottom: 15px;
   border-bottom: 2px solid #d9d6d6;
 }
 
-.login-profile-container > div:nth-child(n + 2) {
+.login-info-container > div:nth-child(n + 2) {
   margin: 0 auto;
   width: 190px;
 }
 
-.login-profile-container > div:nth-child(3) {
+.login-info-container > div:nth-child(3) {
   border: 0px;
   margin-top: 4px;
 }

@@ -6,7 +6,7 @@ import squre_plus from '../../styles/img/square_plus_icon_gray.png'
 import no_thumb_img from '../../styles/img/no_thumb_img.png'
 
 // import components
-import MyProfile from '../../components/MyProfile'
+import ProfileInfo from '../../components/ProfileInfo'
 
 export default function index() {
     return (
@@ -64,7 +64,7 @@ export default function index() {
                 </div>
             </div>
             <div className="blog-right-container">
-                <MyProfile/>
+                <ProfileInfo/>
                 <div className="search-container">
                     <input placeholder="검색기능을 이용해보세요!" />
                 </div>
