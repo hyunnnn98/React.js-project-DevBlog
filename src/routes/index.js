@@ -15,6 +15,7 @@ export default function index() {
         <BrowserRouter>
             <Route path='/' component={appHeader}/>
             <Route exact path='/' component={blogPage}/>
+            <Route exact path='/blog/:id' component={blogPage}/>
             <Route path='/profile' component={profilePage}/>
             <Route path='/login' component={loginPage}/>
         </BrowserRouter>

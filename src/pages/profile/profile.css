@@ -145,6 +145,18 @@
   width: 100%;
 }
 
-.project-period, .project-content {
+.project-period,
+.project-content {
   padding: 10px 0px;
+}
+
+.profile-content-edit {
+  padding: 0 5px;
+}
+
+.profile-content-edit > img {
+  width: 17px;
+  position: relative;
+  top: 4px;
+  cursor: pointer;
 }

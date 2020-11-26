@@ -20,10 +20,10 @@ export default function AppHeader() {
                     <li className={location.pathname === '/profile' ? "onClicked" : null}>
                         <Link to='/profile'>Profile</Link>
                     </li>
+                    <li className={location.pathname === '/login' ? "onClicked" : null}><Link to='/login'>Login</Link></li>
                     <li>
                         <a href="https://github.com/kokomade98" target="_blank">Github</a>
                     </li>
-                    <li className={location.pathname === '/login' ? "onClicked" : null}><Link to='/login'>Login</Link></li>
                 </ul>
                 <div className="headerTitle">WELCOME TO BLOG</div>
                 <div className="headerSubTitle">개발자 블로그에 오신것을 환영합니다</div>
