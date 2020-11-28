@@ -1,0 +1,65 @@
+.edit-project-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.edit-emphasis {
+  font-size: 17px;
+  font-weight: 700;
+  padding-left: 5px;
+  margin-top: 13px;
+}
+
+.edit-input {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid rgb(146, 146, 146);
+  border-radius: 7px;
+  width: 92%;
+  margin-bottom: 10px;
+}
+
+.edit-project-thumb {
+  display: flex;
+}
+
+.edit-project-thumb > input {
+  /* padding: 0; */
+  flex: 1;
+}
+
+.edit-project-thumb > div {
+  box-sizing: border-box;
+  width: 100px;
+  margin: 10px 15px 0px 5px;
+  height: 40px;
+  line-height: 39px;
+  background-color: #333333;
+  color: #ffffff;
+  text-align: center;
+  /* margin-top: 20px; */
+  border-radius: 7px;
+  font-weight: 900;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-project-btn-wrapper {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: row-reverse;
+}
+
+.edit-project-btn-wrapper > div {
+  border-radius: 7px;
+  font-weight: 900;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #333333;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 30px;
+  margin-right: 3px;
+}

@@ -95,7 +95,40 @@
   min-height: 200px;
 }
 
+.profile-skill-list > div:hover .skill-modify > div {
+  display: block;
+}
+
+.skill-modify {
+  position: absolute;
+  /* margin-top: -70px; */
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  box-sizing: border-box;
+  /* padding: 9px 5px; */
+}
+
+.skill-modify > div {
+  display: none;
+  flex: 1;
+  box-sizing: border-box;
+  background-color: rgb(66, 66, 66);
+  color: white;
+  padding: 30px 20px;
+  margin: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.skill-modify > div:nth-child(1) {
+  background-color: rgb(62, 172, 47);
+}
+
 .skill-img {
+  /* clear: both; */
   width: 100%;
   height: 85%;
   background-color: rgba(124, 124, 240, 0.171);
@@ -159,4 +192,14 @@
   position: relative;
   top: 4px;
   cursor: pointer;
+}
+
+.project-type-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-modify > span {
+  margin-left: 3px;
+  display: inline-block;
 }

@@ -33,3 +33,14 @@ body {
   font-family: "NanumSquare_acRegular";
   src: url(./fonts/NanumSquare_acRegular.ttf);
 }
+
+.modal-close-button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.modal-close-button > img {
+  width: 25px;
+}

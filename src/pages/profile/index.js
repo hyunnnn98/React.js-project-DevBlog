@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 
 // import components
 import ProfileInfo from '../../components/ProfileInfo'
+import EditProject from '../../components/modal/editProject'
+import EditSkill from '../../components/modal/editSkill'
 
 // import styles
 import './profile.css'
 import { Profile } from '../../models'
 import plusImg from '../../styles/img/plus.png'
+import deleteImg from '../../styles/img/delete-button.png'
+import editlImg from '../../styles/img/edit-button.png'
 
 export default function ProfileContainer() {
     const [projects, setProjects] = useState(Profile.projects)
@@ -14,8 +18,13 @@ export default function ProfileContainer() {
     const [onCampus, setOnCampus] = useState(Profile.onCampus);
     const [outCampus, setOutCampus] = useState(Profile.outCampus);
 
+    const [showProjectModal, setShowProjectModal] = useState(false)
+    const [showSkillModal, setShowSkillModal] = useState(false)
+
     return (
         <div className="profile-container">
+            <EditProject setShowModal={setShowProjectModal} showModal={showProjectModal} />
+            <EditSkill setShowModal={setShowSkillModal} showModal={showSkillModal} />
             <div className="profile-content-container">
                 <ProfileInfo />
                 <div className="profile-info-container">
@@ -26,7 +35,7 @@ export default function ProfileContainer() {
                     <div className="profile-content">
                         <div>
                             <div className="profile-content-title">▶ 교내
-                            <span className="profile-content-edit"><img src={plusImg} alt=''/></span>
+                            <span className="profile-content-edit"><img src={plusImg} alt='' /></span>
                             </div>
                             <div className="profile-content-award">
                                 {
@@ -57,6 +66,10 @@ export default function ProfileContainer() {
                     {
                         skills.map(v =>
                             <div key={v.id}>
+                                <div className="skill-modify">
+                                    <div onClick={() => setShowSkillModal(true)}>수정</div>
+                                    <div>삭제</div>
+                                </div>
                                 <div className="skill-img">이미지 영역</div>
                                 <div className="skill-sub-title">{v.title}</div>
                             </div>
@@ -70,7 +83,15 @@ export default function ProfileContainer() {
                         <div>
                             <div className="project-title">{v.title}</div>
                             <div className="project-container">
-                                <div className="project-type">{v.type} - {v.position}</div>
+                                <div className="project-type-wrapper">
+                                    <div className="project-type">
+                                        {v.type} - {v.position}
+                                    </div>
+                                    <div className="project-modify">
+                                        <span onClick={() => setShowProjectModal(true)} className="profile-content-edit"><img src={editlImg} alt='' /></span>
+                                        <span className="profile-content-edit"><img src={deleteImg} alt='' /></span>
+                                    </div>
+                                </div>
                                 <div className="project-img">
                                     <a href={v.link} target="_blank">
                                         <img src={v.thumb} alt='' />
