@@ -153,6 +153,7 @@
   flex: 1;
   min-width: 500px;
   min-height: 500px;
+  max-width: 600px;
   text-align: center;
 }
 
@@ -202,4 +203,15 @@
 .project-modify > span {
   margin-left: 3px;
   display: inline-block;
+}
+
+.circleWrapper {
+  margin: 0 auto;
+}
+
+.circleWrapper > img {
+  padding:3px;
+  border-radius: 50px;
+  width: 14px;
+  background-color: rgb(204, 221, 252);
 }

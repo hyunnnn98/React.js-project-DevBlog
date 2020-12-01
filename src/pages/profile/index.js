@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import ProfileInfo from '../../components/ProfileInfo'
 import EditProject from '../../components/modal/editProject'
 import EditSkill from '../../components/modal/editSkill'
+import EditAward from '../../components/modal/editAward'
 
 // import styles
 import './profile.css'
@@ -20,11 +21,30 @@ export default function ProfileContainer() {
 
     const [showProjectModal, setShowProjectModal] = useState(false)
     const [showSkillModal, setShowSkillModal] = useState(false)
+    const [showAwardModal, setShowAwardModal] = useState(false)
+    const [awardType, setAwardType] = useState(true)
+
+    const handelDeleteAward = (type, _id) => {
+        type === 'on' ?
+            setOnCampus(onCampus.filter((e) => (e.id !== _id)))
+            : setOutCampus(outCampus.filter((e) => (e.id !== _id)))
+    }
+
+    const handelDeleteProject = (_id) => {
+        setProjects(projects.filter((e) => (e.id !== _id)))
+    }
 
     return (
         <div className="profile-container">
             <EditProject setShowModal={setShowProjectModal} showModal={showProjectModal} />
             <EditSkill setShowModal={setShowSkillModal} showModal={showSkillModal} />
+            <EditAward
+                type={awardType}
+                setShowModal={setShowAwardModal}
+                showModal={showAwardModal}
+                setOnCampus={setOnCampus}
+                setOutCampus={setOutCampus}
+            />
             <div className="profile-content-container">
                 <ProfileInfo />
                 <div className="profile-info-container">
@@ -34,25 +54,41 @@ export default function ProfileContainer() {
                     <div className="profile-sub-title">학력 / 대외활동</div>
                     <div className="profile-content">
                         <div>
-                            <div className="profile-content-title">▶ 교내
+                            <div onClick={() => {
+                                setShowAwardModal(true)
+                                setAwardType(true)
+                            }} className="profile-content-title">▶ 교내
                             <span className="profile-content-edit"><img src={plusImg} alt='' /></span>
                             </div>
                             <div className="profile-content-award">
                                 {
-                                    onCampus.map(v =>
-                                        (<div>● {v.award_at} {v.title} {v.award.length !== 0 ? `- ${v.award}상` : '참가'}</div>)
+                                    onCampus.map((v) =>
+                                        (<div>
+                                            ● {v.award_at} {v.title} {v.award.length !== 0 ? `- ${v.award}상` : '참가'}
+                                            <span
+                                                onClick={() => handelDeleteAward('on', v.id)}
+                                                className="profile-content-edit circleWrapper"><img src={deleteImg} alt='' /></span>
+                                        </div>)
                                     )
                                 }
                             </div>
                         </div>
                         <div>
-                            <div className="profile-content-title">▶ 교외
+                            <div onClick={() => {
+                                setShowAwardModal(true)
+                                setAwardType(false)
+                            }} className="profile-content-title">▶ 교외
                             <span className="profile-content-edit"><img src={plusImg} alt='' /></span>
                             </div>
                             <div className="profile-content-award">
                                 {
-                                    outCampus.map(v =>
-                                        (<div>● {v.award_at} {v.title} {v.award.length !== 0 ? `- ${v.award}상` : null}</div>)
+                                    outCampus.map((v) =>
+                                        (<div>
+                                            ● {v.award_at} {v.title} {v.award.length !== 0 ? `- ${v.award}상` : null}
+                                            <span
+                                                onClick={() => handelDeleteAward('out', v.id)}
+                                                className="profile-content-edit circleWrapper"><img src={deleteImg} alt='' /></span>
+                                        </div>)
                                     )
                                 }
                             </div>
@@ -89,7 +125,7 @@ export default function ProfileContainer() {
                                     </div>
                                     <div className="project-modify">
                                         <span onClick={() => setShowProjectModal(true)} className="profile-content-edit"><img src={editlImg} alt='' /></span>
-                                        <span className="profile-content-edit"><img src={deleteImg} alt='' /></span>
+                                        <span onClick={() => handelDeleteProject(v.id)} className="profile-content-edit"><img src={deleteImg} alt='' /></span>
                                     </div>
                                 </div>
                                 <div className="project-img">
@@ -104,6 +140,6 @@ export default function ProfileContainer() {
                     )
                 }
             </div>
-        </div>
+        </div >
     )
 }

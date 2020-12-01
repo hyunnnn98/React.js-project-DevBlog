@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Modal from 'react-modal';
+import Modal from 'react-modal'
 
-import './editProfile.css'
+import './editProject.css'
 import closeButton from '../../styles/img/close-button.png'
 
 const customStyles = {
@@ -44,7 +44,6 @@ export default function EditProject(props) {
                 </div>
                 <div className="edit-project-btn-wrapper">
                     <div>수정</div>
-                    <div>취소</div>
                 </div>
             </div>
 

@@ -1,0 +1,38 @@
+.edit-award-container {
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+    width:500px;
+}
+
+.edit-award-container > div {
+    /* margin-bottom: 20px; */
+}
+
+.edit-award-container input {
+    width:'100%';
+}
+
+.edit-award-container > div:nth-child(1) {
+    /* background-color: rgba(0, 0, 0, 0.521); */
+    padding:5px 15px;
+    /* color: white; */
+    text-align: center;
+    font-weight: 900;
+    font-size: 25px;
+    margin-bottom: 20px;
+    color:rgb(10, 73, 190);
+}
+
+.edit-award-container > div:nth-last-child(1) {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px 0px;
+  background-color: #333333;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 7px;
+  font-weight: 900;
+  cursor: pointer;
+} 

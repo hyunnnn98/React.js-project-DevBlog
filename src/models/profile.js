@@ -5,26 +5,31 @@ import projectThumb_4 from '../styles/img/project_thumb_4.png'
 
 export const outCampus = [
     {
+        id: 1,
         title: 'XX',
         award : '우수',
         award_at: '2020.09'
     },
     {
+        id: 2,
         title: 'XX',
         award : '장려',
         award_at: '2020.09'
     },
     {
+        id: 3,
         title: 'XX',
         award : '최우수',
         award_at: '2020.09'
     },
     {
+        id: 4,
         title: 'XX',
         award : '우수',
         award_at: '2020.09'
     },
     {
+        id: 5,
         title: 'XX',
         award : '우수',
         award_at: '2020.09'
@@ -34,26 +39,31 @@ export const outCampus = [
 
 export const onCampus = [
     {
+        id: 1,
         title: 'IoT 라인트레이서',
         award: '장려',
         award_at: '2019.10'
     },
     {
+        id: 2,
         title: '백호튜터링',
         award: '우수',
         award_at: '2019.11'
     },
     {
+        id: 3,
         title: '버디프로그램',
         award: '',
         award_at: '2019.12'
     },
     {
+        id: 4,
         title: '글로벌 포인트 프로그램',
         award: '글로벌챌린저',
         award_at: '2019.12'
     },
     {
+        id: 5,
         title: '외국어말하기대회',
         award: '격려',
         award_at: '2020.09'
@@ -125,6 +135,7 @@ export const skills = [
 
 export const projects = [
     {
+        id: 1,
         title: 'TradeWithどうぶつの森',
         type: '개인 프로젝트',
         position: '풀스택',
@@ -135,6 +146,7 @@ export const projects = [
         link: 'https://github.com/kokomade98'
     },
     {
+        id: 2,
         title: '키미노하나와',
         type: '팀 프로젝트',
         position: '프론트엔드',
@@ -144,6 +156,7 @@ export const projects = [
         link: 'https://github.com/kokomade98'
     },
     {
+        id: 3,
         title: 'Oline GlobalZone',
         type: '팀 프로젝트',
         position: '백엔드',
@@ -153,6 +166,7 @@ export const projects = [
         link: 'https://github.com/kokomade98'
     },
     {
+        id: 4,
         title: 'SmileBot',
         type: '개인 프로젝트',
         position: '풀스택',
