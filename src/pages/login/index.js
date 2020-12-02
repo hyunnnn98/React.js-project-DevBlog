@@ -1,10 +1,10 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import './login.css'
 
 // import components
 import ProfileInfo from '../../components/ProfileInfo'
 
-export default function LoginPage() {
+const LoginPage = () => {
     const [email, setEmail] = useState('tmdgus2358@gmail.com')
     const [password, setPassword] = useState('1234123412')
 
@@ -30,3 +30,5 @@ export default function LoginPage() {
         </div>
     )
 }
+
+export default LoginPage

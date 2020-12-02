@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './appHeader.css';
 
-export default function AppHeader() {
+const AppHeader = () => {
     const location = useLocation();
 
     useEffect(() => {
@@ -31,3 +31,5 @@ export default function AppHeader() {
         </div>
     )
 }
+
+export default AppHeader

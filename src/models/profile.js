@@ -3,6 +3,8 @@ import projectThumb_2 from '../styles/img/project_thumb_2.png'
 import projectThumb_3 from '../styles/img/project_thumb_3.png'
 import projectThumb_4 from '../styles/img/project_thumb_4.png'
 
+import skillThumb_1 from '../styles/img/js.png'
+
 export const outCampus = [
     {
         id: 1,
@@ -74,32 +76,32 @@ export const skills = [
     {
         id: 1,
         title: 'JavaScript',
-        thumb: null
+        thumb: skillThumb_1
     },
     {
         id: 2,
         title: 'PHP',
-        thumb: null
+        thumb: skillThumb_1
     },
     {
         id: 3,
         title: 'React.js',
-        thumb: null
+        thumb: skillThumb_1
     },
     {
         id: 4,
         title: 'ReactNative.js',
-        thumb: null
+        thumb: skillThumb_1
     },
     {
         id: 5,
         title: 'Vue.js',
-        thumb: null
+        thumb: skillThumb_1
     },
     {
         id: 6,
         title: 'Express.js',
-        thumb: null
+        thumb: skillThumb_1
     },
     {
         id: 7,

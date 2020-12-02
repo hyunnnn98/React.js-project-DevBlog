@@ -36,6 +36,11 @@ export default function EditAward(props) {
         if (program.length === 0 || award.length === 0 || date.length === 0) {
             alert("값을 입력해주세요.")
         }
+        /**
+         * 1. 입력 된 값 라라벨 서버에 보내기
+         * 2. 전송 확인되면 자동으로 모달장 닫기
+         * 3. 닫은 후 대외활동 내역 서버로부터 다시 받아온 후 리렌더링
+         */
     }
     return (
         <Modal

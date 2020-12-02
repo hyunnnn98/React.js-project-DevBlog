@@ -44,3 +44,21 @@ body {
 .modal-close-button > img {
   width: 25px;
 }
+
+.normal-button {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px 0px;
+  background-color: #333333;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 7px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.center-image {
+  width: 100px !important;
+  height: 100px !important;
+}

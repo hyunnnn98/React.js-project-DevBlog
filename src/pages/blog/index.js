@@ -5,7 +5,7 @@ import post_thumb_1 from '../../styles/img/post_thumb_1.png'
 
 import BlogRightContainer from '../../components/BlogRightContainer'
 
-export default function BlogContainer() {
+const BlogPage = () => {
     const [posts, setPosts] = useState([
         {
             id: 1,
@@ -66,3 +66,5 @@ export default function BlogContainer() {
         </div>
     )
 }
+
+export default BlogPage

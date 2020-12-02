@@ -14,13 +14,35 @@
   width: 1200px;
 }
 
+.profile-info-plus-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-info-plus-container > div {
+  box-sizing: border-box;
+  flex: 1;
+  text-align: center;
+  padding:10px;
+  margin: 3px;
+  border:1px solid rgb(102, 60, 218);
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-info-plus-container > div:hover {
+  background-color: rgb(102, 60, 218);
+  color: #FFFFFF;
+  transition: all ease 0.4s 0s;
+}
 .profile-info-container {
   flex: 1;
   margin-left: 30px;
 }
 
 .profile-title {
-  background-color: #f7f7f7;
+  background-color: #f3f6fb;
   padding: 40px 30px;
   font-size: 20px;
   font-weight: 900;
@@ -65,7 +87,7 @@
   width: 100%;
   margin: 20px 0px;
   padding: 30px 50px;
-  background-color: #f7f7f7;
+  background-color: #f3f6fb;
   text-align: center;
   border-radius: 5px;
 }
@@ -86,9 +108,7 @@
 }
 
 .profile-skill-list > div {
-  /* flex: auto; */
   box-sizing: border-box;
-  /* padding: 10px 20px; */
   background-color: rgba(0, 0, 255, 0.034);
   margin: 10px;
   min-width: 200px;
@@ -99,15 +119,18 @@
   display: block;
 }
 
+.profile-skill-list > div:hover .skill-img{
+  transition: all ease 0.4s 0s;
+  opacity: 0.1;
+}
+
 .skill-modify {
   position: absolute;
-  /* margin-top: -70px; */
   margin-top: 50px;
   display: flex;
   flex-direction: row;
   width: 200px;
   box-sizing: border-box;
-  /* padding: 9px 5px; */
 }
 
 .skill-modify > div {
@@ -121,17 +144,21 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: 700;
+  z-index: 1000;
 }
 
 .skill-modify > div:nth-child(1) {
-  background-color: rgb(62, 172, 47);
+  background-color: rgb(37, 135, 228);
 }
 
 .skill-img {
-  /* clear: both; */
-  width: 100%;
-  height: 85%;
   background-color: rgba(124, 124, 240, 0.171);
+  width: 200px;
+  height:200px;
+}
+
+.skill-img > img{
+  width:100%;
 }
 
 .skill-sub-title {
