@@ -20,7 +20,10 @@ const AppHeader = () => {
                     <li className={location.pathname === '/profile' ? "onClicked" : null}>
                         <Link to='/profile'>Profile</Link>
                     </li>
-                    <li className={location.pathname === '/login' ? "onClicked" : null}><Link to='/login'>Login</Link></li>
+                    <li className={location.pathname === '/login' ? "onClicked" : null}><Link to='/login'>MyPage</Link></li>
+                    <li className={location.pathname === '/logout' ? "onClicked" : null}>
+                        <Link to='/'>Log out</Link>
+                    </li>
                     <li>
                         <a href="https://github.com/kokomade98" target="_blank">Github</a>
                     </li>

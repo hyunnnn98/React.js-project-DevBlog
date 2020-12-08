@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { API_PROFILE } from '../../utils/api'
 
 // import components
 import ProfileInfo from '../../components/ProfileInfo'
@@ -15,6 +16,7 @@ import deleteOutlineImg from '../../styles/img/trash-can.png'
 import editlImg from '../../styles/img/edit-button.png'
 
 const ProfilePage = () => {
+    const [isLogin, setIsLogin] = useState(true)
     const [projects, setProjects] = useState(Profile.projects)
     const [skills, setSkills] = useState(Profile.skills)
     const [onCampus, setOnCampus] = useState(Profile.onCampus);
@@ -27,7 +29,8 @@ const ProfilePage = () => {
     const [skillType, setSkillType] = useState(null)
     const [projectType, setProjectType] = useState(null)
 
-    const handleDeleteAward = (type, _id) => {
+    const handleDeleteAward =async (type, _id) => {
+        await API_PROFILE.deleteAward(_id)
         type === 'on' ?
             setOnCampus(onCampus.filter((e) => (e.id !== _id)))
             : setOutCampus(outCampus.filter((e) => (e.id !== _id)))
@@ -42,6 +45,12 @@ const ProfilePage = () => {
     }
 
     useEffect(() => {
+        handleRefresh('award')
+        // handleRefresh('skill')
+        handleRefresh('project')
+    }, [])
+
+    useEffect(() => {
         if (showSkillModal === false) {
             setSkillType(null)
         }
@@ -53,24 +62,73 @@ const ProfilePage = () => {
         }
     }, [showProjectModal])
 
+    const handleRefresh = async (type) => {
+        try {
+            let api = null
+            let setState = null
+
+            switch (type) {
+                case 'award':
+                    api = API_PROFILE.getAwards
+                    setState = (data) => {
+                        setOnCampus(data.onCampus)
+                        setOutCampus(data.outCampus)
+                    }
+                    break;
+                case 'skill':
+                    api = API_PROFILE.getSkills
+                    setState = (data) => { setSkills(data) }
+                    break;
+                case 'project':
+                    api = API_PROFILE.getProjects
+                    setState = (data) => { setProjects(data) }
+                    break;
+                default:
+                    break;
+            }
+
+            const { data } = await api()
+            console.log(type + " : " + data.info)
+            console.log(data)
+            setState(data.info)
+        } catch (e) {
+            return false;
+        }
+
+        return true;
+    }
+
     return (
         <div className="profile-container">
-            <EditProject project={projectType} setShowModal={setShowProjectModal} showModal={showProjectModal} />
-            <EditSkill skill={skillType} setShowModal={setShowSkillModal} showModal={showSkillModal} />
+            <EditProject
+                project={projectType}
+                setShowModal={setShowProjectModal}
+                showModal={showProjectModal}
+                handleRefresh={handleRefresh}
+            />
+            <EditSkill
+                skill={skillType}
+                setShowModal={setShowSkillModal}
+                showModal={showSkillModal}
+                handleRefresh={handleRefresh}
+            />
             <EditAward
                 type={awardType}
                 setShowModal={setShowAwardModal}
                 showModal={showAwardModal}
                 setOnCampus={setOnCampus}
                 setOutCampus={setOutCampus}
+                handleRefresh={handleRefresh}
             />
             <div className="profile-content-container">
                 <div>
                     <ProfileInfo />
-                    <div class="profile-info-plus-container">
-                        <div onClick={() => setShowSkillModal(true)}>기술스택  +</div>
-                        <div onClick={() => setShowProjectModal(true)}>프로젝트  +</div>
-                    </div>
+                    {isLogin ?
+                        <div class="profile-info-plus-container">
+                            <div onClick={() => setShowSkillModal(true)}>기술스택  +</div>
+                            <div onClick={() => setShowProjectModal(true)}>프로젝트  +</div>
+                        </div> : null
+                    }
                 </div>
                 <div className="profile-info-container">
                     <div className="profile-title">
@@ -79,40 +137,49 @@ const ProfilePage = () => {
                     <div className="profile-sub-title">학력 / 대외활동</div>
                     <div className="profile-content">
                         <div>
-                            <div onClick={() => {
-                                setShowAwardModal(true)
-                                setAwardType(true)
-                            }} className="profile-content-title">▶ 교내
-                            <span className="profile-content-edit"><img src={plusImg} alt='' /></span>
+                            <div className="profile-content-title">▶ 교내
+                                {isLogin ?
+                                    <span onClick={() => {
+                                        setShowAwardModal(true)
+                                        setAwardType(true)
+                                    }} className="profile-content-edit">
+                                        <img src={plusImg} alt='' /></span> : null
+                                }
                             </div>
                             <div className="profile-content-award">
                                 {
                                     onCampus.map((v) =>
                                         (<div>
-                                            ● {v.award_at} {v.title} {v.award.length !== 0 ? `- ${v.award}상` : '참가'}
-                                            <span
-                                                onClick={() => handleDeleteAward('on', v.id)}
-                                                className="profile-content-edit"><img src={deleteOutlineImg} alt='' /></span>
+                                            ● {v.award_at} {v.title} {v.award && v.award.length !== 0 ? `- ${v.award}상` : '참가'}
+                                            { isLogin ?
+                                                <span
+                                                    onClick={() => handleDeleteAward('on', v.id)}
+                                                    className="profile-content-edit"><img src={deleteOutlineImg} alt='' /></span> : null
+                                            }
                                         </div>)
                                     )
                                 }
                             </div>
                         </div>
                         <div>
-                            <div onClick={() => {
-                                setShowAwardModal(true)
-                                setAwardType(false)
-                            }} className="profile-content-title">▶ 교외
-                            <span className="profile-content-edit"><img src={plusImg} alt='' /></span>
+                            <div className="profile-content-title">▶ 교외
+                                {isLogin ?
+                                    <span onClick={() => {
+                                        setShowAwardModal(true)
+                                        setAwardType(false)
+                                    }} className="profile-content-edit"><img src={plusImg} alt='' /></span> : null
+                                }
                             </div>
                             <div className="profile-content-award">
                                 {
                                     outCampus.map((v) =>
                                         (<div>
-                                            ● {v.award_at} {v.title} {v.award.length !== 0 ? `- ${v.award}상` : null}
-                                            <span
-                                                onClick={() => handleDeleteAward('out', v.id)}
-                                                className="profile-content-edit"><img src={deleteOutlineImg} alt='' /></span>
+                                            ● {v.award_at} {v.title} {v.award && v.award.length !== 0 ? `- ${v.award}상` : null}
+                                            { isLogin ?
+                                                <span
+                                                    onClick={() => handleDeleteAward('out', v.id)}
+                                                    className="profile-content-edit"><img src={deleteOutlineImg} alt='' /></span> : null
+                                            }
                                         </div>)
                                     )
                                 }
@@ -127,13 +194,15 @@ const ProfilePage = () => {
                     {
                         skills.map(v =>
                             <div key={v.id}>
-                                <div className="skill-modify">
-                                    <div onClick={() => {
-                                        setSkillType(v)
-                                        setShowSkillModal(true)
-                                    }}>수정</div>
-                                    <div onClick={() => handleDeleteSkill(v.id)}>삭제</div>
-                                </div>
+                                {isLogin ?
+                                    <div className="skill-modify">
+                                        <div onClick={() => {
+                                            setSkillType(v)
+                                            setShowSkillModal(true)
+                                        }}>수정</div>
+                                        <div onClick={() => handleDeleteSkill(v.id)}>삭제</div>
+                                    </div> : null
+                                }
                                 <div className="skill-img"><img src={v.thumb} alt='썸네일' /></div>
                                 <div className="skill-sub-title">{v.title}</div>
                             </div>
@@ -151,13 +220,15 @@ const ProfilePage = () => {
                                     <div className="project-type">
                                         {v.type} - {v.position}
                                     </div>
-                                    <div className="project-modify">
-                                        <span onClick={() => {
-                                            setProjectType(v)
-                                            setShowProjectModal(true)
+                                    {isLogin ?
+                                        <div className="project-modify">
+                                            <span onClick={() => {
+                                                setProjectType(v)
+                                                setShowProjectModal(true)
                                             }} className="profile-content-edit"><img src={editlImg} alt='' /></span>
-                                        <span onClick={() => handleDeleteProject(v.id)} className="profile-content-edit"><img src={deleteImg} alt='' /></span>
-                                    </div>
+                                            <span onClick={() => handleDeleteProject(v.id)} className="profile-content-edit"><img src={deleteImg} alt='' /></span>
+                                        </div> : null
+                                    }
                                 </div>
                                 <div className="project-img">
                                     <a href={v.link} target="_blank">

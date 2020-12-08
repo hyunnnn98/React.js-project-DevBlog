@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal';
+import { API_PROFILE } from '../../utils/api'
 
 import './editAward.css'
 import closeButton from '../../styles/img/close-button.png'
@@ -17,12 +18,12 @@ const customStyles = {
 
 export default function EditAward(props) {
     const [inputs, setInputs] = useState({
-        program: '',
+        title: '',
         award: '',
-        date: ''
+        award_at: ''
     });
 
-    const { program, award, date } = inputs
+    const { title, award, award_at } = inputs
 
     const onChange = (e) => {
         const { value, name } = e.target
@@ -32,9 +33,23 @@ export default function EditAward(props) {
         })
     }
 
-    const handelCreateAward = () => {
-        if (program.length === 0 || award.length === 0 || date.length === 0) {
+    const handleCreateAward = async () => {
+        if (title.length === 0 || award_at.length === 0) {
             alert("값을 입력해주세요.")
+        }
+        try {
+            const data = {
+                'type': props.type ? 'onCampus' : 'outCampus',
+                title: inputs.title,
+                award: inputs.award,
+                award_at: inputs.award_at
+            }
+
+            await API_PROFILE.setAward(data)
+            await props.handleRefresh('award')
+            props.setShowModal(false)
+        } catch (e) {
+            alert("오류!")
         }
         /**
          * 1. 입력 된 값 라라벨 서버에 보내기
@@ -44,6 +59,7 @@ export default function EditAward(props) {
     }
     return (
         <Modal
+            ariaHideApp={false}
             isOpen={props.showModal}
             contentLabel="대외활동 수정"
             style={customStyles}
@@ -52,12 +68,12 @@ export default function EditAward(props) {
             <div className="edit-award-container">
                 <div>{props.type ? '교내' : '교외'} 활동</div>
                 <div>활동명</div>
-                <input name="program" className="edit-input" onChange={onChange} type="text" placeholder="활동명을 입력해주세요." />
+                <input name="title" className="edit-input" onChange={onChange} type="text" placeholder="활동명을 입력해주세요." />
                 <div>상장명</div>
-                <input name="award" className="edit-input" onChange={onChange} type="text" placeholder="상장명을 입력해주세요." />
+                <input name="award" className="edit-input" onChange={onChange} type="text" placeholder="상장명을 입력해주세요. ( 없다면 패스 )" />
                 <div>날짜</div>
-                <input name="date" className="edit-input" onChange={onChange} type="text" placeholder="날짜를 입력해주세요." />
-                <div onClick={handelCreateAward}>추가</div>
+                <input name="award_at" className="edit-input" onChange={onChange} type="text" placeholder="날짜를 입력해주세요." />
+                <div onClick={handleCreateAward}>추가</div>
             </div>
         </Modal>
     )

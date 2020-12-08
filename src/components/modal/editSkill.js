@@ -19,6 +19,8 @@ const customStyles = {
 export default function EditSkill(props) {
     const [title, setTitle] = useState('')
     const [image, setImage] = useState(null)
+    
+    //TODO 이미지 업로드 기능 추가
     return (
         <Modal
             isOpen={props.showModal}
