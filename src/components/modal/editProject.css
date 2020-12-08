@@ -31,7 +31,7 @@
   flex: 1;
 }
 
-.edit-project-thumb > div {
+.edit-project-thumb > label {
   box-sizing: border-box;
   width: 100px;
   margin: 10px 15px 0px 5px;
@@ -63,7 +63,7 @@
 
 .wide-input {
   /* padding:50px 15px; */
-  height:200px;
+  height:150px;
 }
 
 .edit-project-type {

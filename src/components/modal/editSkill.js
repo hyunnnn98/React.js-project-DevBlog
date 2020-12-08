@@ -92,7 +92,7 @@ export default function EditSkill(props) {
                 </div>
                 <input id="upload-file" type="file" onChange={(e) => handleChange(e)} hidden />
                 <div style={{ alignSelf: "flex-start" }}>사진 업로드 ( 이미지를 클릭해주세요 )</div>
-                <label for="upload-file" className="edit-skill-image-container">
+                <label htmlFor="upload-file" className="edit-skill-image-container">
                     {
                         props.skill ?
                             <img src={image.imagePreviewUrl !== null ? image.imagePreviewUrl : props.skill.thumb} alt="썸네일" /> :

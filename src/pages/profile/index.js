@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 // import utils
 import { API_PROFILE } from '../../utils/api'
 import convertDate from '../../utils/convertDate'
+import { convertPosition, convertType } from '../../utils/convertProject'
 
 // import components
 import ProfileInfo from '../../components/ProfileInfo'
@@ -32,7 +33,7 @@ const ProfilePage = () => {
     const [skillType, setSkillType] = useState(null)
     const [projectType, setProjectType] = useState(null)
 
-    const handleDeleteAward =async (type, _id) => {
+    const handleDeleteAward = async (type, _id) => {
         await API_PROFILE.deleteAward(_id)
         type === 'on' ?
             setOnCampus(onCampus.filter((e) => (e.id !== _id)))
@@ -128,7 +129,7 @@ const ProfilePage = () => {
                 <div>
                     <ProfileInfo />
                     {isLogin ?
-                        <div class="profile-info-plus-container">
+                        <div className="profile-info-plus-container">
                             <div onClick={() => setShowSkillModal(true)}>기술스택  +</div>
                             <div onClick={() => setShowProjectModal(true)}>프로젝트  +</div>
                         </div> : null
@@ -153,7 +154,7 @@ const ProfilePage = () => {
                             <div className="profile-content-award">
                                 {
                                     onCampus.map((v) =>
-                                        (<div>
+                                        (<div key={v.id}>
                                             ● {convertDate(v.award_at)} {v.title} {v.award && v.award.length !== 0 ? `- ${v.award}상` : '참가'}
                                             { isLogin ?
                                                 <span
@@ -177,7 +178,7 @@ const ProfilePage = () => {
                             <div className="profile-content-award">
                                 {
                                     outCampus.map((v) =>
-                                        (<div>
+                                        (<div key={v.id}>
                                             ● {convertDate(v.award_at)} {v.title} {v.award && v.award.length !== 0 ? `- ${v.award}상` : null}
                                             { isLogin ?
                                                 <span
@@ -217,12 +218,12 @@ const ProfilePage = () => {
             <div className="profile-project-list">
                 {
                     projects.map(v =>
-                        <div>
+                        <div key={v.id}>
                             <div className="project-title">{v.title}</div>
                             <div className="project-container">
                                 <div className="project-type-wrapper">
                                     <div className="project-type">
-                                        {v.type} - {v.position}
+                                        {`${convertType(v.type)} 프로젝트`} - {convertPosition(v.position)}
                                     </div>
                                     {isLogin ?
                                         <div className="project-modify">
@@ -239,7 +240,9 @@ const ProfilePage = () => {
                                         <img src={v.thumb} alt='' />
                                     </a>
                                 </div>
-                                <div className="project-period">개발기간 : {v.period}</div>
+                                <div className="project-period">
+                                    개발기간 : {`${convertDate(v.project_start_date)} ~ ${convertDate(v.project_end_date)}`}
+                                </div>
                                 <div className="project-content">{v.content}</div>
                             </div>
                         </div>
