@@ -152,6 +152,7 @@
 }
 
 .skill-img {
+  display: flex;
   background-color: rgba(124, 124, 240, 0.171);
   width: 200px;
   height:200px;

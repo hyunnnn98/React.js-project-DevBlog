@@ -6,8 +6,8 @@ export function getSkills() {
     return axios.get(SERVER_URL + '/skill')
 }
 
-export function setSkill(skill_id, data) {
-    return axios.post(SERVER_URL + `/skill/${skill_id}`, data)
+export function setSkill(data) {
+    return axios.post(SERVER_URL + `/skill`, data)
 }
 
 export function deleteSkill({ skill_id }) {

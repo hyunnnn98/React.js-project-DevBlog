@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
+
+// import utils
 import { API_PROFILE } from '../../utils/api'
+import convertDate from '../../utils/convertDate'
 
 // import components
 import ProfileInfo from '../../components/ProfileInfo'
@@ -46,7 +49,7 @@ const ProfilePage = () => {
 
     useEffect(() => {
         handleRefresh('award')
-        // handleRefresh('skill')
+        handleRefresh('skill')
         handleRefresh('project')
     }, [])
 
@@ -150,7 +153,7 @@ const ProfilePage = () => {
                                 {
                                     onCampus.map((v) =>
                                         (<div>
-                                            ● {v.award_at} {v.title} {v.award && v.award.length !== 0 ? `- ${v.award}상` : '참가'}
+                                            ● {convertDate(v.award_at)} {v.title} {v.award && v.award.length !== 0 ? `- ${v.award}상` : '참가'}
                                             { isLogin ?
                                                 <span
                                                     onClick={() => handleDeleteAward('on', v.id)}
@@ -174,7 +177,7 @@ const ProfilePage = () => {
                                 {
                                     outCampus.map((v) =>
                                         (<div>
-                                            ● {v.award_at} {v.title} {v.award && v.award.length !== 0 ? `- ${v.award}상` : null}
+                                            ● {convertDate(v.award_at)} {v.title} {v.award && v.award.length !== 0 ? `- ${v.award}상` : null}
                                             { isLogin ?
                                                 <span
                                                     onClick={() => handleDeleteAward('out', v.id)}
