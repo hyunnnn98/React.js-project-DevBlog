@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from 'react-modal';
 import { API_PROFILE } from '../../utils/api'
 
@@ -24,6 +24,15 @@ export default function EditSkill(props) {
         imagePreviewUrl: null
     })
 
+    const { skill } = props
+    
+    useEffect(() => {
+        if (props && props.skill) {
+            setTitle(props.skill.title)
+        }
+
+    }, [skill])
+
     const handleChange = (e) => {
         console.log(e.target.files)
         let reader = new FileReader();
@@ -31,8 +40,8 @@ export default function EditSkill(props) {
 
         reader.onloadend = () => {
             setImage({
-                file,
-                imagePreviewUrl: reader.result
+                'file': file,
+                'imagePreviewUrl': reader.result
             });
         }
 
@@ -49,14 +58,24 @@ export default function EditSkill(props) {
         formData.append('title', title);
 
         // TODO 예외처리하기
-        await API_PROFILE.setSkill(formData);
+        props.skill ?
+            await API_PROFILE.updateSkill(props.skill.id, formData) : await API_PROFILE.setSkill(formData)
+
         await props.handleRefresh('skill')
-        props.setShowModal(false)
+        handleInit()
     }
 
     const onChange = (e) => {
-        console.log(e.target.value)
         setTitle(e.target.value)
+    }
+
+    const handleInit = () => {
+        setTitle('')
+        setImage({
+            file: null,
+            imagePreviewUrl: null
+        })
+        props.setShowModal(false)
     }
 
     return (
@@ -64,8 +83,9 @@ export default function EditSkill(props) {
             isOpen={props.showModal}
             contentLabel="스킬 수정"
             style={customStyles}
+            ariaHideApp={false}
         >
-            <div onClick={() => props.setShowModal(false)} className="modal-close-button"><img src={closeButton} alt='' /></div>
+            <div onClick={() => handleInit()} className="modal-close-button"><img src={closeButton} alt='' /></div>
             <div className="edit-skill-container">
                 <div style={{ alignSelf: "flex-start", fontWeight: 900, fontSize: 24, marginBottom: '10px' }}>
                     기술스택 {props.skill ? "수정" : "추가"}
@@ -75,15 +95,15 @@ export default function EditSkill(props) {
                 <label for="upload-file" className="edit-skill-image-container">
                     {
                         props.skill ?
-                            <img src={props.skill.thumb} alt="썸네일" /> :
+                            <img src={image.imagePreviewUrl !== null ? image.imagePreviewUrl : props.skill.thumb} alt="썸네일" /> :
                             <img
-                                className={image === null ? "center-image" : null}
+                                className={image.imagePreviewUrl === null ? "center-image" : null}
                                 src={image.imagePreviewUrl === null ? noPhoto : image.imagePreviewUrl} alt="" /
                             >
                     }
                 </label>
                 <div style={{ alignSelf: "flex-start" }}>Skill 이름</div>
-                <input type="text" onChange={(e) => onChange(e)} className="edit-input" value={props.skill ? props.skill.title : title} />
+                <input type="text" onChange={(e) => onChange(e)} className="edit-input" value={title} />
                 <div onClick={() => handleCreate()} className="normal-button">{props.skill ? "수정" : "추가"}</div>
             </div>
 

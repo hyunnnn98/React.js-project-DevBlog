@@ -10,7 +10,12 @@ export function setSkill(data) {
     return axios.post(SERVER_URL + `/skill`, data)
 }
 
-export function deleteSkill({ skill_id }) {
+export function updateSkill(skill_id, data) {
+    console.log('보내기 직전 데이터는? ', data)
+    return axios.post(SERVER_URL + `/skill/update/${skill_id}`, data)
+}
+
+export function deleteSkill(skill_id) {
     return axios.delete(SERVER_URL + `/skill/${skill_id}`)
 }
 
@@ -22,10 +27,6 @@ export function getAwards() {
 
 export function setAward(data) {
     return axios.post(SERVER_URL + '/award', data)
-}
-
-export function updateAward(award_id, data) {
-    return axios.put(SERVER_URL + `/award/${award_id}`, data)
 }
 
 export function deleteAward(award_id) {
@@ -43,7 +44,7 @@ export function setProject(data) {
 }
 
 export function updateProject(project_id, data) {
-    return axios.put(SERVER_URL + `/project/${project_id}`, data)
+    return axios.post(SERVER_URL + `/project/update/${project_id}`, data)
 }
 
 export function deleteProject(project_id) {

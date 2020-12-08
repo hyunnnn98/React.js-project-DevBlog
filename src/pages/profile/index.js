@@ -43,7 +43,8 @@ const ProfilePage = () => {
         setProjects(projects.filter((e) => (e.id !== _id)))
     }
 
-    const handleDeleteSkill = (_id) => {
+    const handleDeleteSkill = async (_id) => {
+        await API_PROFILE.deleteSkill(_id)
         setSkills(skills.filter((e) => (e.id !== _id)))
     }
 
