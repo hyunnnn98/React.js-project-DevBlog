@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from 'react-modal';
 import { API_PROFILE } from '../../utils/api'
+import { dataURLtoFile } from '../../utils/convertProject'
 
 import closeButton from '../../styles/img/close-button.png'
 import noPhoto from '../../styles/img/no-photo.png'
@@ -28,6 +29,17 @@ export default function EditSkill(props) {
     
     useEffect(() => {
         if (props && props.skill) {
+            let reader = new FileReader();
+            let file = dataURLtoFile(skill.thumb, 'a.png')
+
+            reader.onloadend = () => {
+                setImage({
+                    'file': file,
+                    'imagePreviewUrl': reader.result
+                });
+            }
+
+            reader.readAsDataURL(file)
             setTitle(props.skill.title)
         }
 
@@ -94,8 +106,6 @@ export default function EditSkill(props) {
                 <div style={{ alignSelf: "flex-start" }}>사진 업로드 ( 이미지를 클릭해주세요 )</div>
                 <label htmlFor="upload-file" className="edit-skill-image-container">
                     {
-                        props.skill ?
-                            <img src={image.imagePreviewUrl !== null ? image.imagePreviewUrl : props.skill.thumb} alt="썸네일" /> :
                             <img
                                 className={image.imagePreviewUrl === null ? "center-image" : null}
                                 src={image.imagePreviewUrl === null ? noPhoto : image.imagePreviewUrl} alt="" /

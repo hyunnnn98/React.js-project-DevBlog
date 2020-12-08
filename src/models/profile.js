@@ -155,7 +155,7 @@ export const projects = [
         thumb: projectThumb_2,
         period: '2020.05 ~ 08',
         content: '닌텐도 회사의 대표작 “동물의 숲” 의  거래 플랫폼 개발 실시간 대화를 통해 유저간의 편리한 거래가 가능.',
-        link: 'https://github.com/kokomade98'
+        link: '키미노하나와'
     },
     {
         id: 3,

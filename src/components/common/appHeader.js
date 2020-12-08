@@ -21,15 +21,15 @@ const AppHeader = () => {
                         <Link to='/profile'>Profile</Link>
                     </li>
                     <li className={location.pathname === '/login' ? "onClicked" : null}><Link to='/login'>MyPage</Link></li>
-                    <li className={location.pathname === '/logout' ? "onClicked" : null}>
+                    {/* <li className={location.pathname === '/logout' ? "onClicked" : null}>
                         <Link to='/'>Log out</Link>
-                    </li>
+                    </li> */}
                     <li>
                         <a href="https://github.com/kokomade98" target="_blank">Github</a>
                     </li>
                 </ul>
-                <div className="headerTitle">WELCOME TO BLOG</div>
-                <div className="headerSubTitle">개발자 블로그에 오신것을 환영합니다</div>
+                <div className="headerTitle">DEV HYUN</div>
+                <div className="headerSubTitle">해외 가고 싶은 개발자 블로그에 오신것을 환영합니다</div>
             </div>
         </div>
     )

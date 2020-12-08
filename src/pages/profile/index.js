@@ -21,10 +21,10 @@ import editlImg from '../../styles/img/edit-button.png'
 
 const ProfilePage = () => {
     const [isLogin, setIsLogin] = useState(true)
-    const [projects, setProjects] = useState(Profile.projects)
-    const [skills, setSkills] = useState(Profile.skills)
-    const [onCampus, setOnCampus] = useState(Profile.onCampus);
-    const [outCampus, setOutCampus] = useState(Profile.outCampus);
+    const [projects, setProjects] = useState([])
+    const [skills, setSkills] = useState([])
+    const [onCampus, setOnCampus] = useState([]);
+    const [outCampus, setOutCampus] = useState([]);
 
     const [showProjectModal, setShowProjectModal] = useState(false)
     const [showSkillModal, setShowSkillModal] = useState(false)
@@ -137,7 +137,7 @@ const ProfilePage = () => {
                 </div>
                 <div className="profile-info-container">
                     <div className="profile-title">
-                        저는 ~~을 ~~하는 ~~ 입니다.
+                        저는 새로운 것을 도전하기 좋아하는 개발자입니다.
                     </div>
                     <div className="profile-sub-title">학력 / 대외활동</div>
                     <div className="profile-content">
