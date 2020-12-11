@@ -66,3 +66,8 @@ body {
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
   background-color: rgba(0, 0, 0, 0.55) !important
 }
+
+.current {
+  font-weight: 700;
+  text-decoration: none !important;
+}

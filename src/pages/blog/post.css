@@ -66,8 +66,6 @@
 }
 
 .post-preview-item >div.current {
-    font-weight: 700;
-    text-decoration: none !important;
     border-bottom: 1px solid !important;
 }
 /* ========= post preview ========= */

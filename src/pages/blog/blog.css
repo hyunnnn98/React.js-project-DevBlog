@@ -98,8 +98,16 @@
   font-weight: 900;
 }
 
+.category-main-container > div.current {
+  color: #4fb1e6;
+}
+
 .category-post-count {
   float: right;
+}
+
+.category-post-title {
+  cursor: pointer;
 }
 
 .category-main-container > div:nth-child(1) {
@@ -110,7 +118,7 @@
   padding-top: 10px;
 }
 
-.category-main-container > div > img {
+.category-main-container > div img {
   float: left;
   width: 23px;
   margin-right: 5px;

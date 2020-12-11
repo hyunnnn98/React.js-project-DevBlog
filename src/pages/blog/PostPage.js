@@ -5,15 +5,12 @@ import './post.css'
 import disqusSample from '../../styles/img/disqus-sample.png'
 
 export default function PostPage(props) {
-    const [folder, setFolder] = useState({
-        id: null,
-        title: null,
-    })
-    
+
+
     return (
         <div className="post-body-container">
             <div className="post-title-container">
-                <div>React.js</div>
+                <div>{props.folder.title}</div>
                 <div>제목이 들어갈 위치입니다.</div>
                 <div>2020. 11. 13. 13:12</div>
             </div>
