@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // import styles
 import './post.css'
 import disqusSample from '../../styles/img/disqus-sample.png'
 
-export default function PostPage() {
+export default function PostPage(props) {
+    const [folder, setFolder] = useState({
+        id: null,
+        title: null,
+    })
+    
     return (
         <div className="post-body-container">
             <div className="post-title-container">
@@ -36,8 +41,8 @@ export default function PostPage() {
             </div>
             {/* comment - items - container */}
             <div className="comment-items-container">
-                댓글 기능이 들어갈 위치입니다. - Disqus 
-                <img src={disqusSample} alt=''/>
+                댓글 기능이 들어갈 위치입니다. - Disqus
+                <img src={disqusSample} alt='' />
             </div>
             <div>전체 게시글 페이지네이션 이 들어갈 위치입니다.</div>
         </div>

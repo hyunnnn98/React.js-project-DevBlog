@@ -34,20 +34,22 @@
   flex: 7;
 }
 
-.post-right-container > div:nth-child(1) {
+.post-right-container > a {
+  text-decoration: none;
+  display: block;
   font-weight: 700;
   font-size: 20px;
   padding: 5px 0px;
   color: #3c3a3a;
 }
 
-.post-right-container > div:nth-child(2) {
+.post-right-content {
   padding: 20px 0px;
   color: #979797;
   font-size: 15px;
 }
 
-.post-right-container > div:nth-child(3) {
+.post-right-created {
   color: #6f6f6f;
 }
 

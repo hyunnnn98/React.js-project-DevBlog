@@ -1,21 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './appHeader.css';
 
 const AppHeader = () => {
     const location = useLocation();
+    const [numberOfPost, setNumberOfPost] = useState(null)
 
     useEffect(() => {
         const currentPath = location.pathname;
-        const searchParams = new URLSearchParams(location.search);
+        const postId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+        setNumberOfPost(postId ? postId : null)
+        // const searchParams = new URLSearchParams(location.search);
+        console.log(currentPath, `/blog/${postId}`)
     }, [location]);
 
     return (
         <div className='headerContainer'>
             <div className='headerContent'>
                 <ul className='headerNav'>
-                    <li className={location.pathname === '/' ? "onClicked" : null}>
-                        <Link to='/'>Blog</Link>
+                    <li className={location.pathname === '/blog' || location.pathname === `/blog/${numberOfPost}` ? "onClicked" : null}>
+                        <Link to='/blog'>Blog</Link>
                     </li>
                     <li className={location.pathname === '/profile' ? "onClicked" : null}>
                         <Link to='/profile'>Profile</Link>
