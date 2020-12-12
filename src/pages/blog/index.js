@@ -11,7 +11,12 @@ import post_thumb_1 from '../../styles/img/post_thumb_1.png'
 // components
 import BlogRightContainer from '../../components/BlogRightContainer'
 import PostPage from './PostPage'
-import { SignalCellularNullOutlined } from '@material-ui/icons';
+
+// TODO 여기서 라우터 모듈로 오른쪽 컴포넌트는 유지하고,
+// 왼쪽 컴포넌트만 파라매터 확인한 후 변경하는 방식으로 작업하기
+
+// 지금 이슈는, 라우팅이 돌아가면서 오른쪽 카테고리 컴포넌트도 변경되면서
+// 화면이 깜빡이는 에러가 있음.
 
 const PostList = ({ posts }) => {
     return posts && typeof posts === "object" && posts.map(v =>
