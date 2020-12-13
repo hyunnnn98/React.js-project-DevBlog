@@ -15,10 +15,10 @@ export default function RootRouter() {
         <BrowserRouter>
             <Route path='/' component={appHeader} />
             <Route exact path='/blog' component={blogPage} />
-            <Route exact path='/blog/:postId' component={blogPage} />
+            {/* <Route exact path='/blog/:postId' component={blogPage} /> */}
             <Route path='/profile' component={profilePage} />
             <Route path='/login' component={loginPage} />
-            {/* <Redirect path="/" to={`/blog`} /> */}
+            <Redirect path="/" to={`/blog`} />
         </BrowserRouter>
     )
 }
