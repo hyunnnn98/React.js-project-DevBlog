@@ -11,7 +11,7 @@ const AppHeader = () => {
         const postId = currentPath.substring(currentPath.lastIndexOf('/') + 1);
         setNumberOfPost(postId ? postId : null)
         // const searchParams = new URLSearchParams(location.search);
-        console.log(currentPath, `/blog/${postId}`)
+        // console.log(currentPath, `/blog/${postId}`)
     }, [location]);
 
     return (
