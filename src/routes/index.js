@@ -8,6 +8,7 @@ import appHeader from '../components/common/appHeader'
 import blogPage from '../pages/blog'
 import profilePage from '../pages/profile'
 import loginPage from '../pages/login'
+import addPostPage from '../pages/write'
 
 
 export default function RootRouter() {
@@ -17,10 +18,11 @@ export default function RootRouter() {
             <Switch>
                 <Route path='/blog/:id' component={blogPage} />
                 <Route path='/blog' component={blogPage} />
+                <Route path='/add-post' component={addPostPage} />
                 <Route path='/profile' component={profilePage} />
                 <Route path='/login' component={loginPage} />
             </Switch>
-            {/* <Redirect path="/" to={`/blog`} /> */}
+            <Redirect path="/" to={`/blog`} />
         </BrowserRouter>
     )
 }

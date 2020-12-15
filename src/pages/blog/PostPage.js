@@ -1,12 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom';
 
 // import styles
 import './post.css'
 import disqusSample from '../../styles/img/disqus-sample.png'
 
 export default function PostPage(props) {
+    const location = useLocation();
+    // 페이지 추적
+    useEffect(() => {
+        // setIsBlogPage(postId && typeof (Number(postId)) === 'number' ? false : true)
+        window.scrollTo(0, 0)
 
-    // return <div>게시글 나오는지 테스트</div>
+        /*
+            사용자로부터 들어올 때 '/blog/:id' 로 들어온 경우 ?
+    
+            db에서 해당 카테고리 id + post 정보 가져와서
+            PostPage에 넘겨주기 !!!
+    
+            정보 가져오는 동안은 loading ... 연결
+        */
+    }, [location]);
+
+
     return (
         <div className="post-body-container">
             <div className="post-title-container">
@@ -22,18 +38,18 @@ export default function PostPage(props) {
                     <div>more</div>
                 </div>
                 <div className="post-preview-wrapper">
-                    <div className="post-preview-item">
+                    <Link to='/blog/1' className="post-preview-item">
                         <div className="post-preview-title">[React.js] React Hooks 란 무엇일까? (1)</div>
                         <div className="post-preview-date">2020.11.10</div>
-                    </div>
-                    <div className="post-preview-item">
+                    </Link>
+                    <Link to='/blog/2' className="post-preview-item">
                         <div className="post-preview-title current">[React.js] React Hooks 란 무엇일까? (1)</div>
                         <div className="post-preview-date">2020.11.10</div>
-                    </div>
-                    <div className="post-preview-item">
+                    </Link>
+                    <Link to='/blog/3' className="post-preview-item">
                         <div className="post-preview-title">[React.js] React Hooks 란 무엇일까? (1)</div>
                         <div className="post-preview-date">2020.11.10</div>
-                    </div>
+                    </Link>
                 </div>
             </div>
             {/* comment - items - container */}

@@ -21,6 +21,9 @@ const AppHeader = () => {
                     <li className={location.pathname === '/blog' || location.pathname === `/blog/${numberOfPost}` ? "onClicked" : null}>
                         <Link to='/blog'>Blog</Link>
                     </li>
+                    <li className={location.pathname === '/add-post' ? "onClicked" : null}>
+                        <Link to='/add-post'>AddPost</Link>
+                    </li>
                     <li className={location.pathname === '/profile' ? "onClicked" : null}>
                         <Link to='/profile'>Profile</Link>
                     </li>

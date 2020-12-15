@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import squre_plus from '../styles/img/square_plus_icon_gray.png'
 import no_thumb_img from '../styles/img/no_thumb_img.png'
@@ -32,6 +33,9 @@ const BlogRightContainer = (props) => {
     return (
         <div className="blog-right-container">
             <ProfileInfo />
+            <Link to="/add-post" className="blog-btn-write">
+                게시글 작성
+            </Link>
             <div className="search-container">
                 <input placeholder="검색기능을 이용해보세요!" />
             </div>

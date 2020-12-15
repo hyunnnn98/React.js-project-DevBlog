@@ -1,0 +1,6 @@
+.write-container {
+    display: flex;
+    width: 1200px;
+    height: 100%;
+    margin: 20px auto;
+}

@@ -65,6 +65,7 @@
   margin-bottom: 10px;
 }
 
+.blog-btn-write,
 .search-container,
 .category-container,
 .new-poster-container {
@@ -134,4 +135,26 @@
   float: left;
   width: 35px;
   margin: 0px 5px;
+}
+
+/* 글쓰기 || 수정 버튼 */
+.blog-btn-write {
+  box-sizing: border-box;
+  text-align: center;
+  padding:11px;
+  /* border: 1px solid rgb(102, 60, 218); */
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: -5px auto !important;
+  font-size: 15px;
+  background-color: rgb(102, 60, 218);
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.blog-btn-write:hover {
+  background-color: rgb(40, 177, 219);
+  color: #FFFFFF;
+  transition: all ease 1s 0s;
 }
