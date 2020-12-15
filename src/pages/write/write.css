@@ -1,6 +1,31 @@
 .write-container {
     display: flex;
+    flex-direction: column;
     width: 1200px;
     height: 100%;
     margin: 20px auto;
+}
+
+.write-title-box {
+    display: flex;
+    flex-direction: column;
+    padding:20px 15px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    background-color: rgba(109, 164, 235, 0.144);
+
+}
+
+.write-title-box>div:nth-child(1) {
+    margin: 0px 10px 10px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.write-title-box > input {
+    padding: 15px;
+    flex: 1;
+    font-weight: 700;
+    border-radius: 5px;
+    border: 1px solid rgb(189, 189, 189);
 }
