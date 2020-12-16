@@ -99,6 +99,17 @@
   font-weight: 900;
 }
 
+.category-container > div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.category-container > div:nth-child(1) span:nth-child(2) {
+  border-bottom: 2px solid rgb(153, 11, 247);
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
 .category-main-container > div.current {
   color: #4fb1e6;
 }

@@ -21,14 +21,14 @@
 }
 
 .edit-award-container > div:nth-last-child(1) {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 15px 0px;
-  background-color: #333333;
-  color: #ffffff;
-  text-align: center;
-  margin-top: 20px;
-  border-radius: 7px;
-  font-weight: 900;
-  cursor: pointer;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 0px;
+    background-color: #333333;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 7px;
+    font-weight: 900;
+    cursor: pointer;
 } 

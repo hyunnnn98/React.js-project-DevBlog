@@ -6,6 +6,7 @@ import no_thumb_img from '../styles/img/no_thumb_img.png'
 
 // import components
 import ProfileInfo from './ProfileInfo'
+import AddCategory from './modal/addCategory'
 
 const BlogRightContainer = (props) => {
     const [count, setCount] = useState(0)
@@ -14,9 +15,16 @@ const BlogRightContainer = (props) => {
         { id: 2, title: 'Github는 이것만 알면 다 ...', url: 'http://localhost:3001/', thumb: null },
         { id: 3, title: 'React Hooks 란 무엇일 ...', url: 'http://localhost:3001/', thumb: null }
     ])
+    const [addCategoryModal, setAddCategoryModal] = useState(false)
 
     const { folders, folder } = props
+    //TODO 폴더 props 로 뺀거 다시 원복하기.
+    // 생각해보니.. 폴더는 여기서 다 관리 하고 있기 때문에
+    // 메인에서 억지로 당겨 쓸 필요가 없다.
+    // 컴포넌트 나눈것을 모듈화 하는 개념으로 생각하고 props 로 뺀거 다시 원복하기.
+
     console.log(folder)
+
     useEffect(() => {
         let postsCount = 0
         folders && folders.map(v => postsCount += v.posts)
@@ -32,6 +40,10 @@ const BlogRightContainer = (props) => {
 
     return (
         <div className="blog-right-container">
+            <AddCategory 
+                setShowModal={setAddCategoryModal}
+                showModal={addCategoryModal}
+            />
             <ProfileInfo />
             <Link to="/add-post" className="blog-btn-write">
                 게시글 작성
@@ -40,7 +52,7 @@ const BlogRightContainer = (props) => {
                 <input placeholder="검색기능을 이용해보세요!" />
             </div>
             <div className="category-container">
-                <div>카테고리</div>
+                <div><span>카테고리</span><span onClick={() => setAddCategoryModal(true)}>추가</span></div>
                 <div className={folder.id === null ? 'current' : null}>
                     <span onClick={() => props.setFolder({ id: null, title: null })} className="category-post-title">
                         All Categories
