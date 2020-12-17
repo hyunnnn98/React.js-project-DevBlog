@@ -134,6 +134,7 @@
   float: left;
   width: 23px;
   margin-right: 5px;
+  margin-top: -2px;
 }
 
 .new-poster-container > div:nth-child(n + 2) {

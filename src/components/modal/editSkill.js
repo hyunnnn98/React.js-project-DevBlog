@@ -19,7 +19,7 @@ const customStyles = {
 };
 
 export default function EditSkill(props) {
-    const [title, setTitle] = useState('')
+    const [title, setTitle] = useState(null)
     const [image, setImage] = useState({
         file: null,
         imagePreviewUrl: null
@@ -113,7 +113,7 @@ export default function EditSkill(props) {
                     }
                 </label>
                 <div style={{ alignSelf: "flex-start" }}>Skill 이름</div>
-                <input type="text" onChange={(e) => onChange(e)} className="edit-input" value={title} />
+                <input type="text" onChange={(e) => onChange(e)} placeholder="Skill 이름을 입력해주세요." className="edit-input" value={title} />
                 <div onClick={() => handleCreate()} className="normal-button">{props.skill ? "수정" : "추가"}</div>
             </div>
 

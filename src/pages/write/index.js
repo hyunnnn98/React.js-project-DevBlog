@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { createRef, useEffect } from 'react'
 
 // import modules
 import 'codemirror/lib/codemirror.css';
@@ -9,17 +9,26 @@ import { Editor } from '@toast-ui/react-editor';
 import './write.css'
 
 export default function AddPost() {
+    const editorRef = createRef()
+
     useEffect(() => {
         /**
          * 1. 서버로 부터 카테고리 목록 받아온 후 selectBox에 전달.
          * 
          */
     }, [])
+
+    const handleSave = () => {
+        console.log(editorRef.current.getInstance().getHtml())
+        const htmlInstance = editorRef.current.getInstance().getHtml()
+
+        // title, category, htmlInstnace 서버로 보내기.
+    }
+
     return (
         <div className="write-container">
-            게시글 작성 페이지 입니다.
             <div className="write-title-box">
-                <div>게시글 작성하기</div>
+                <div>게시글 작성하기<span onClick={() => handleSave()}>작성하기</span></div>
                 <select name="type" onChange={""}>
                     <option value="" disabled selected>카테고리를 선택해 주세요.</option>
                     <option value="1">목록1</option>
@@ -36,6 +45,7 @@ export default function AddPost() {
                 initialEditType="markdown"
                 useCommandShortcut={true}
                 usageStatistics={false}
+                ref={editorRef}
             />
         </div>
     )
