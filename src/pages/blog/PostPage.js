@@ -1,17 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 
+// import modules
+import { API_BLOG } from '../../utils/api'
+
 // import styles
 import './post.css'
 import disqusSample from '../../styles/img/disqus-sample.png'
 
 export default function PostPage(props) {
     const location = useLocation();
+    const [post, setPost] = useState(null)
     // 페이지 추적
     useEffect(() => {
         // setIsBlogPage(postId && typeof (Number(postId)) === 'number' ? false : true)
         window.scrollTo(0, 0)
 
+        // TODO 로딩창 추가
+
+        // 게시글 불러오기
+        async function loadPost(postId) {
+            // TODO params의 id 가져오기
+            const { data } = API_BLOG.getPost()
+            setPost(data)
+        }
+        
+        loadPost()
         /*
             사용자로부터 들어올 때 '/blog/:id' 로 들어온 경우 ?
     

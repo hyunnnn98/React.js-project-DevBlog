@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 // models
 import { postsData, foldersData } from '../../models/post'
+import { API_BLOG } from '../../utils/api'
 
 // styles
 import './blog.css'
@@ -21,6 +22,16 @@ const BlogPage = (props) => {
     const [folderInfo, setFolderInfo] = useState({ id: null, title: null })
 
     const { match: { path } } = props
+
+    // 폴더 불러오기
+    useEffect(() => {
+        async function setCategory(setFolders) {
+            const { data : foldersData } = await API_BLOG.getCategories();
+            setFolders(foldersData)
+        }
+
+        setCategory(setFolders)
+    }, [])
 
     // 페이지 추적
     useEffect(() => {

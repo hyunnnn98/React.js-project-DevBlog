@@ -26,6 +26,7 @@ export default function AddPost() {
     }
 
     return (
+        //TODO 대표 썸네일 지정하기.
         <div className="write-container">
             <div className="write-title-box">
                 <div>게시글 작성하기<span onClick={() => handleSave()}>작성하기</span></div>
