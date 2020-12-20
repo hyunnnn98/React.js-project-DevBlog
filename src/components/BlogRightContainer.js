@@ -23,7 +23,7 @@ const BlogRightContainer = (props) => {
     // 메인에서 억지로 당겨 쓸 필요가 없다.
     // 컴포넌트 나눈것을 모듈화 하는 개념으로 생각하고 props 로 뺀거 다시 원복하기.
 
-    console.log(folder)
+    console.log(folder, folders)
 
     useEffect(() => {
         let postsCount = 0

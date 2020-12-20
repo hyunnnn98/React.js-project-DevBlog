@@ -15,7 +15,7 @@ export default function PostPage(props) {
     useEffect(() => {
         // setIsBlogPage(postId && typeof (Number(postId)) === 'number' ? false : true)
         window.scrollTo(0, 0)
-
+        // console.log(location)
         // TODO 로딩창 추가
 
         // 게시글 불러오기

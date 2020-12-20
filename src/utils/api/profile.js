@@ -1,5 +1,6 @@
-import { SERVER_URL } from '../const'
+// import { SERVER_URL } from '../const'
 import axios from 'axios'
+const SERVER_URL = 'http://54.226.39.10/api'
 
 // skill api
 export function getSkills() {

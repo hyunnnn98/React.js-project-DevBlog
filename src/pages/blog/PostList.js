@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
+// import utils
+import moment from 'moment';
+
 import post_thumb_1 from '../../styles/img/post_thumb_1.png'
 
 export default function PostList({ posts }) {
@@ -12,7 +15,7 @@ export default function PostList({ posts }) {
             <div className="post-right-container">
                 <Link to={`/blog/${v.id}`}>{v.title}</Link>
                 <div className="post-right-content">{v.content}</div>
-                <div className="post-right-created">{v.created_at}</div>
+                <div className="post-right-created">{moment(v.created_at, "YYYY-MM-DD hh:ss").format("YYYY .MM .DD  hh:ss")}</div>
             </div>
         </div>
     )

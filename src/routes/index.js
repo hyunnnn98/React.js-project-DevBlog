@@ -16,7 +16,7 @@ export default function RootRouter() {
         <BrowserRouter>
             <Route path='/' component={appHeader} />
             <Switch>
-                <Route path='/blog/:id' component={blogPage} />
+                <Route path='/blog/:post_id' component={blogPage} />
                 <Route path='/blog' component={blogPage} />
                 <Route path='/add-post' component={addPostPage} />
                 <Route path='/profile' component={profilePage} />

@@ -16,21 +16,23 @@ import PostList from './PostList'
 const BlogPage = (props) => {
     // 데이터 집단 관리
     const [posts, setPosts] = useState(postsData)
-    const [folders, setFolders] = useState(foldersData)
+    const [folders, setFolders] = useState(null)
     // 선택된 데이터 관리
     const [postInfo, setPostInfo] = useState({ id: null, content: null })
     const [folderInfo, setFolderInfo] = useState({ id: null, title: null })
 
     const { match: { path } } = props
 
-    // 폴더 불러오기
     useEffect(() => {
-        async function setCategory(setFolders) {
-            const { data : foldersData } = await API_BLOG.getCategories();
-            setFolders(foldersData)
+        // 폴더 불러오기
+        async function setData(setFolders, setPosts) {
+            const { data: foldersData } = await API_BLOG.getCategories();
+            setFolders(foldersData.info)
+            const { data: postsData } = await API_BLOG.getAllPosts();
+            setPosts(postsData.info)
         }
 
-        setCategory(setFolders)
+        setData(setFolders, setPosts)
     }, [])
 
     // 페이지 추적
@@ -53,13 +55,15 @@ const BlogPage = (props) => {
 
             <div className="blog-left-container">
                 <Route exact path='/blog' render={() => <PostList posts={posts} />} />
-                <Route path='/blog/:id' render={() => <PostPage folder={folderInfo} />} />
+                <Route path='/blog/:post_id' render={() => <PostPage folder={folderInfo} />} />
             </div>
-            <BlogRightContainer
-                folder={folderInfo}
-                setFolder={setFolderInfo}
-                folders={folders}
-            />
+            { folders ?
+                <BlogRightContainer
+                    folder={folderInfo}
+                    setFolder={setFolderInfo}
+                    folders={folders}
+                /> : null
+            }
         </div>
     )
 }
